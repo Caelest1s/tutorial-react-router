@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './App.css'
 
+/* Outlet é a posição onde será renderizado o elemento (sub-conteúdo) das rotas aninhadas */
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
         <Link to="/invoices">Invoices</Link> |{" "}
         <Link to="/expenses">Expenses</Link>
       </nav>
+      <Outlet />
     </>
   )
 }
