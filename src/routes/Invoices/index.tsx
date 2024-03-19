@@ -1,4 +1,5 @@
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
+import QueryLink from "../../components/QueryLink";
 import { getInvoices } from "../../data";
 import './style.css';
 
@@ -42,13 +43,14 @@ export default function Invoices() {
 
                     .map((invoice) => (
                         /* NavLink posso customizar os elementos quando a propriedade 'to' está ativa */
-                        <NavLink
-                            className={({ isActive }) => isActive ? "dblock nav-red" : "dblock nav-blue"}
+                        /* QueryLink mantenho a pesquisa ao clicar em um link sem perder o que contem na saida do input */
+                        <QueryLink
+                            className={({ isActive }: any) => isActive ? "dblock nav-red" : "dblock nav-blue"}
                             to={`/invoices/${invoice.number}`}
                             key={invoice.number}
                         >
                             {invoice.name}
-                        </NavLink>
+                        </QueryLink>
                     ))}
             </nav>
             <Outlet />
